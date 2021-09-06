@@ -1,0 +1,18 @@
+#test{
+    background-color:brown;
+   
+}
+
+.test1{
+    background-color:antiquewhite;
+}
+
+.test2{
+    background-color:aqua;
+}
+@media (max-width: 768px) {
+    #test{
+        background-color:red;
+       
+    }
+  }
