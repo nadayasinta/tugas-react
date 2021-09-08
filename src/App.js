@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './App.css';
+import Component1  from './Component1'
 
 
 
@@ -60,12 +61,7 @@ class App extends Component {
           </div>
           <div className='row justify-content-around'>
             {this.state.descriptionData.map(item=>
-            <>
-              <div>{item.id}</div>
-              <div>{item.title}</div>
-              <div>{item.description}</div>
-              <div>{item.showDeleteButton}</div>
-              </>
+              <Component1 key={item.id} title={item.title} description={item.description} showDeleteButton={item.showDeleteButton}/>
             )}
           </div>
         </div>
