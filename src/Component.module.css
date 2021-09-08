@@ -1,18 +1,4 @@
-#test{
-    background-color:brown;
-   
+.card{
+    background-color:aliceblue;
+    
 }
-
-.test1{
-    background-color:antiquewhite;
-}
-
-.test2{
-    background-color:aqua;
-}
-@media (max-width: 768px) {
-    #test{
-        background-color:red;
-       
-    }
-  }
