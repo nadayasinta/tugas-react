@@ -1,8 +1,7 @@
 import style from'./Component.module.css'
 
-
-function Component1(props) {
-  
+export default function Component2(props) {
+        
         return (
             <div>
               <h1 id={style.test}>{props.title}</h1>
@@ -12,5 +11,3 @@ function Component1(props) {
             </div>
         )
   }
-
-export default Component1
