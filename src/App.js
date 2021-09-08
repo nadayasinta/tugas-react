@@ -1,70 +1,46 @@
 import { Component } from 'react';
-import './App.css';
-import Component1  from './Component1'
-
-
 
 class App extends Component {
-    constructor(props){
-      super(props)
-      this.state = { 
-        titlePage:'WELCOME TO REACT',
-        subTitle:'A JavaScript library for building user interfaces',
-        descriptionData:[
-          {
-            id:1,
-            title:"Declarative",
-            description:"React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.",
-            showDeleteButton: true
-          },
-          {
-            id:2,
-            title:"Component-Based",
-            description:"Build encapsulated components that manage their own state, then compose them to make complex UIs.",
-            showDeleteButton: true
-          },
-          {
-            id:3,
-            title:"Learn Once, Write Anywhere",
-            description:"We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code.",
-            showDeleteButton: false
-          },
-        ]
-       }
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      name:'nada',
+    };
+  }
+
+  componentDidMount() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+
+  componentDidUpdate(prevState) {
+    console.log('componentDidUpdate')
+    if(this.state.count!==prevState.count){
+      document.title = `You clicked ${this.state.count} times`;
+    } 
+     if(this.state.name!==prevState.name){
+      document.title = `You change name to${this.state.name}`;
     }
 
-    componentDidMount() {
-      setTimeout(()=>{
-        this.setState({ titlePage:'HAPPY CODING' })
-      },5000)
-    }
+  }
+  componentWillUnmount(){
+    console.log('componentWillUnmount')
+    document.title = `Goodbye`;
+  }
 
-    componentWillUnmount() {
-    }
-
-    componentDidUpdate() {
-     
-    }
-
-    render(){
+  render() {
     return (
-        <div className='container'>
-          <div className='row'>
-            <div className='col-12 text-center'>
-              <h1 className={this.state.titleClassName}>{this.state.titlePage}</h1>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-12 text-center'>
-              <h2 className="title">{this.state.subTitle}</h2>
-            </div>
-          </div>
-          <div className='row justify-content-around'>
-            {this.state.descriptionData.map(item=>
-              <Component1 key={item.id} title={item.title} description={item.description} showDeleteButton={item.showDeleteButton}/>
-            )}
-          </div>
-        </div>
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        </button>
+        <hr/>
+        {this.state.name}
+        <button onClick={() => this.setState({ name: 'NADAAA' })}>
+          Change Name
+        </button>
+      </div>
     );
   }
 }

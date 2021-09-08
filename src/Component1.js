@@ -1,5 +1,4 @@
 export default function Component2(props) {
-        
         return (
             <div  className="col-8 shadow-sm p-3 m-4 bg-white rounded text-center">
               <h1>{props.title}</h1>
