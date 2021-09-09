@@ -13,6 +13,7 @@ class HomeClass extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <div className='container-fluid vh-100 bg-light'>
                 <div className='row'>
@@ -37,6 +38,9 @@ class HomeClass extends Component {
                         </div>
                     ))}
                 </div>
+                <Link to='/other/1'>ke page other 1</Link>
+                <Link to='/other/2'>ke page other 2</Link>
+                <Link to='/other/3'>ke page other 3</Link>
             </div>
         );
     }
