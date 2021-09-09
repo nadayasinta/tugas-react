@@ -3,21 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import HomeFunction from './Component/HomeFunction';
-import HomeClass from './Component/HomeClass';
+import Home from './Component/Home';
 import ErrorPage from './Component/Error';
-// import DetailPage from './Component/DetailPageFunction';
-import DetailPage from './Component/DetailPageClass';
-import OtherPage from './Component/OtherPage';
 
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
-            <Route path='/' exact component={HomeClass} />
-            <Route path='/detail/:id' exact component={DetailPage} />
-            <Route path='/other/:id'>
-                <OtherPage />
-            </Route>
+            <Route path='/' exact component={Home} />
             <Route component={ErrorPage} />
         </Switch>
     </BrowserRouter>,
