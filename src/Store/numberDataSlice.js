@@ -2,16 +2,22 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getDataToServer = createAsyncThunk(
     'users/getDataToServer',
-    async (userId, thunkAPI) => {
-        fetch('https://testendpoint.free.beeceptor.com', {
+    async (data, thunkAPI) => {
+        console.log(data);
+        return await fetch('https://almock.alterra.dev/almock/demoa', {
             method: 'GET',
         })
             .then((response) => {
-                return response.json();
+                if (response.ok) {
+                    return response.json();
+                }
+                throw Error;
             })
             .then((result) => {
-                console.log(result);
                 return result;
+            })
+            .catch((error) => {
+                throw error;
             });
     }
 );
@@ -22,6 +28,7 @@ export const numberDataSlice = createSlice({
         numberData: [1, 2],
         addTwo: false,
         name: '',
+        requestStatus: '',
     },
     reducers: {
         tambahArray: (state) => {
@@ -50,9 +57,16 @@ export const numberDataSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(getDataToServer.fulfilled, (state, action) => {
-            // lakukan perubahan state disini
-        });
+        builder
+            .addCase(getDataToServer.pending, (state, action) => {
+                state.requestStatus = 'Loading';
+            })
+            .addCase(getDataToServer.fulfilled, (state, action) => {
+                state.requestStatus = action.payload.Message;
+            })
+            .addCase(getDataToServer.rejected, (state, action) => {
+                state.requestStatus = 'Failed';
+            });
     },
 });
 
