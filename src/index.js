@@ -6,15 +6,18 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Component/Home';
 import ErrorPage from './Component/Error';
 import { Provider } from 'react-redux';
-import { store } from './Store/store';
+import { PersistGate } from 'redux-persist/es/integration/react';
+import { store, persistor } from './Store/store';
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <Switch>
-                <Route path='/' exact component={Home} />
-                <Route component={ErrorPage} />
-            </Switch>
-        </BrowserRouter>
+        <PersistGate persistor={persistor}>
+            <BrowserRouter>
+                <Switch>
+                    <Route path='/' exact component={Home} />
+                    <Route component={ErrorPage} />
+                </Switch>
+            </BrowserRouter>
+        </PersistGate>
     </Provider>,
     document.getElementById('root')
 );
