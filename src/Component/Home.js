@@ -1,81 +1,66 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 function Home(props) {
     const [userData, setUserData] = useState({
         name: '',
-        password: '',
+        gender: '',
     });
-    const [errorMessage, setErrorMessage] = useState('');
-    const inputOther = useRef(null);
 
     const handleChange = (event) => {
-        console.log(event.target.name);
-        const newUserData = {
+        setUserData({
             ...userData,
             [event.target.name]: event.target.value,
-        };
-        setUserData(newUserData);
-        if (event.target.name === 'password') {
-            if (event.target.value.length < 4) {
-                setErrorMessage('password tidak valid');
-            } else {
-                setErrorMessage('');
-            }
-        }
-    };
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setUserData({ name: '', password: '' });
+        });
     };
 
-    const handleSubmitOther = (event) => {
+    const handleOnSubmit = (event) => {
         event.preventDefault();
-        console.log(inputOther);
-        console.log(inputOther.current);
-        console.log(inputOther.current.value);
-        alert(inputOther.current.value);
+        alert('ok');
+        setUserData({
+            name: '',
+            gender: '',
+        });
     };
 
     return (
         <div className='container-fluid min-vh-100 bg-light'>
             <div className='row justify-content-center'>
-                <div className='col-12 p-5'>
-                    <form onSubmit={handleSubmit}>
-                        NAME
+                {JSON.stringify(userData)}
+                <div className='col-8 p-5 shadow bg-white'>
+                    <form onSubmit={handleOnSubmit}>
+                        <label for='Name'>Name :</label>
                         <input
-                            name='name'
+                            name='Name'
                             type='text'
+                            id='Name'
                             value={userData.name}
                             onChange={handleChange}
-                        ></input>
-                        {userData.name}
+                        />
                         <br />
-                        PASSWORD
-                        <input
-                            name='password'
-                            type='password'
-                            value={userData.password}
-                            onChange={handleChange}
-                        ></input>
-                        {userData.password}
-                        <br></br>
-                        {errorMessage}
-                        <button type='submit' disabled={false}>
-                            Submit
-                        </button>
-                    </form>
-                    <br />
-                    <br />
-                    <br />
+                        <br />
 
-                    <form onSubmit={handleSubmitOther}>
+                        <label for='gender'>Gender :</label>
                         <input
-                            name='Other'
-                            type='text'
-                            ref={inputOther}
-                        ></input>
-                        <button type='submit' disabled={false}>
-                            Submit
+                            type='radio'
+                            value='male'
+                            name='gender'
+                            checked={userData.gender === 'male'}
+                            onChange={handleChange}
+                        />
+                        <label for='male'>Male</label>
+                        <input
+                            type='radio'
+                            value='female'
+                            name='gender'
+                            checked={userData.gender === 'female'}
+                            onChange={handleChange}
+                        />
+                        <label for='female'>Female</label>
+                        <br />
+                        <br />
+
+                        <button type='submit' className='btn btn-primary'>
+                            Sign Up
                         </button>
                     </form>
                 </div>
