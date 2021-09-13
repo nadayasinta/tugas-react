@@ -5,14 +5,17 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './Component/Home';
 import ErrorPage from './Component/Error';
-
+import { Provider } from 'react-redux';
+import { store } from './Store/store';
 ReactDOM.render(
-    <BrowserRouter>
-        <Switch>
-            <Route path='/' exact component={Home} />
-            <Route component={ErrorPage} />
-        </Switch>
-    </BrowserRouter>,
+    <Provider store={store}>
+        <BrowserRouter>
+            <Switch>
+                <Route path='/' exact component={Home} />
+                <Route component={ErrorPage} />
+            </Switch>
+        </BrowserRouter>
+    </Provider>,
     document.getElementById('root')
 );
 
