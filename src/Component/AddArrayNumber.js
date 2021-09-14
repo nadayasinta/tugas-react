@@ -16,21 +16,24 @@ function AddArrayNumber(props) {
     return (
         <div className='container-fluid min-vh-100 bg-light'>
             <div className='row justify-content-center'>
+                <h1>Add Array</h1>
                 <div className='col-8 p-5 shadow bg-white text-center'>
                     <button
+                        data-testid='buttonKurangi'
                         className='btn btn-primary'
-                        onClick={() => kurangiArray}
+                        onClick={() => kurangiArray()}
                     >
                         -
                     </button>
                     <button
+                        data-testid='buttonTambah'
                         className='btn btn-primary'
-                        onClick={() => tambahArray}
+                        onClick={() => tambahArray()}
                     >
                         +
                     </button>
                     <br />
-                    <span class='h1 px-3'>
+                    <span className='h1 px-3' data-testid='arrayNumber'>
                         [
                         {numberData.map((item, index) => (
                             <span key={index}>{item},</span>
