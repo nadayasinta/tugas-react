@@ -3,10 +3,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const getDataToServer = createAsyncThunk(
     'users/getDataToServer',
     async (data, thunkAPI) => {
-        console.log(data);
-        return await fetch('https://almock.alterra.dev/almock/demoa', {
-            method: 'GET',
-        })
+        console.log(data, thunkAPI);
+        return await fetch(
+            'https://6141c998357db50017b3dd1b.mockapi.io/kampus_merdeka',
+            { method: 'GET' }
+        )
             .then((response) => {
                 if (response.ok) {
                     return response.json();
@@ -62,7 +63,7 @@ export const numberDataSlice = createSlice({
                 state.requestStatus = 'Loading';
             })
             .addCase(getDataToServer.fulfilled, (state, action) => {
-                state.requestStatus = action.payload.Message;
+                state.requestStatus = action.payload.message;
             })
             .addCase(getDataToServer.rejected, (state, action) => {
                 state.requestStatus = 'Failed';

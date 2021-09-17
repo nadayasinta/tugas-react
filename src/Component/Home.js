@@ -10,6 +10,9 @@ import {
 function Home(props) {
     const numberData = useSelector((state) => state.namaReducer.numberData);
     const name = useSelector((state) => state.namaReducer.name);
+    const requestStatus = useSelector(
+        (state) => state.namaReducer.requestStatus
+    );
 
     const dispatch = useDispatch();
 
@@ -46,6 +49,8 @@ function Home(props) {
                     >
                         Change Name
                     </button>{' '}
+                    <br />
+                    {requestStatus}
                     <button
                         className='btn btn-primary'
                         onClick={() => dispatch(getDataToServer('tets'))}
