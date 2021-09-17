@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { numberDataSlice } from './numberDataSlice';
+import { productSlice } from './productSlice';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -14,7 +14,7 @@ import storage from 'redux-persist/lib/storage';
 
 // config tanpa persist
 const reducers = combineReducers({
-    namaReducer: numberDataSlice.reducer,
+    products: productSlice.reducer,
 });
 const persistConfig = {
     key: 'root',
