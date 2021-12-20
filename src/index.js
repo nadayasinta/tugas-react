@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './Component/Home';
 import ErrorPage from './Component/Error';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
-import { store, persistor } from './Store/store';
+import { store, persistor } from './StoreToolkit/store';
+import Home from './Component/HomeToolkit';
+// import Home from './Component/HomeRedux';
+// import store from './StoreRedux/store';
+
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate persistor={persistor}>
