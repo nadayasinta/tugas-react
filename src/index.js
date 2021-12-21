@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ErrorPage from './Component/Error';
+import UploadPage from './Component/Upload';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
 import { store, persistor } from './StoreToolkit/store';
@@ -17,6 +18,7 @@ ReactDOM.render(
             <BrowserRouter>
                 <Switch>
                     <Route path='/' exact component={Home} />
+                    <Route path='/upload' exact component={UploadPage} />
                     <Route component={ErrorPage} />
                 </Switch>
             </BrowserRouter>
